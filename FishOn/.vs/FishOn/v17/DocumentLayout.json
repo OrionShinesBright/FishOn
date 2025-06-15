@@ -1,9 +1,13 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\orion\\Desktop\\FishOn\\FishOn\\",
+  "WorkspaceRootPath": "C:\\Users\\New\\Desktop\\FishOn\\FishOn\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CFD69A45-9F50-4E59-998D-0358F7F9CBFF}|FishOn.vcxproj|C:\\Users\\orion\\Desktop\\FishOn\\FishOn\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{CFD69A45-9F50-4E59-998D-0358F7F9CBFF}|FishOn.vcxproj|C:\\Users\\New\\Desktop\\FishOn\\FishOn\\SigmaDev_Test.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CFD69A45-9F50-4E59-998D-0358F7F9CBFF}|FishOn.vcxproj|solutionrelative:SigmaDev_Test.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CFD69A45-9F50-4E59-998D-0358F7F9CBFF}|FishOn.vcxproj|C:\\Users\\New\\Desktop\\FishOn\\FishOn\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{CFD69A45-9F50-4E59-998D-0358F7F9CBFF}|FishOn.vcxproj|solutionrelative:main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
@@ -19,12 +23,25 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "SigmaDev_Test.cpp",
+              "DocumentMoniker": "C:\\Users\\New\\Desktop\\FishOn\\FishOn\\SigmaDev_Test.cpp",
+              "RelativeDocumentMoniker": "SigmaDev_Test.cpp",
+              "ToolTip": "C:\\Users\\New\\Desktop\\FishOn\\FishOn\\SigmaDev_Test.cpp",
+              "RelativeToolTip": "SigmaDev_Test.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-06-14T12:47:49.917Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "main.cpp",
-              "DocumentMoniker": "C:\\Users\\orion\\Desktop\\FishOn\\FishOn\\main.cpp",
+              "DocumentMoniker": "C:\\Users\\New\\Desktop\\FishOn\\FishOn\\main.cpp",
               "RelativeDocumentMoniker": "main.cpp",
-              "ToolTip": "C:\\Users\\orion\\Desktop\\FishOn\\FishOn\\main.cpp",
+              "ToolTip": "C:\\Users\\New\\Desktop\\FishOn\\FishOn\\main.cpp",
               "RelativeToolTip": "main.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAKAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-06-14T11:29:52.666Z",
               "EditorCaption": ""
