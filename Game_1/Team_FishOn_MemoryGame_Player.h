@@ -3,11 +3,11 @@
 using namespace std;
 
 /*****************************************************
-* TEAM: FishOn										 *
-* MEMBERS:	1. SYED HAIDER ALI JAFFRI	24L-0		 *
-*			2. WALEED BIN OMER			24L-0		 *
-*			3. MUHAMMAD RAFAY			24L-0649	 *
-*	   MEMORY MATCHING GAME - IDEAL HACKATHON		 *
+* TEAM: FishOn										 
+* MEMBERS:		1. SYED HAIDER ALI JAFFRI		24L-0		 
+*			2. WALEED BIN OMER			24L-0		 
+*			3. MUHAMMAD RAFAY			24L-0649	 
+*	   MEMORY MATCHING GAME - IDEAL HACKATHON		 
 *****************************************************/
 
 class Player

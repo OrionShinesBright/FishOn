@@ -1,4 +1,4 @@
-#include "Player.h"
+#include "Team_FishOn_MemoryGame_Player.h"
 
 void Player::updateScore(int points)
 {
