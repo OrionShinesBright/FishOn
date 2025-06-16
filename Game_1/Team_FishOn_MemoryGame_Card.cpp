@@ -1,6 +1,6 @@
 #include "Team_FishOn_MemoryGame_Card.h"
 
-
+Card::Card() : value(0), isFlipped(false), isMatched(false) {}
 
 Card::Card(int val) : value(val), isFlipped(false), isMatched(false)
 {

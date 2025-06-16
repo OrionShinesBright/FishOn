@@ -36,6 +36,7 @@ private:
 	
 
 public:
+	Card();
 	Card(int val);
 	void operator=(const Card& other);
 
