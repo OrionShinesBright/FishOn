@@ -20,7 +20,7 @@ public:
 	Card(int val = -1) : value(val), isFlipped(false), isMatched(false) {}
 	void flip();
 	bool checkMatch(Card& other);
-	void draw();
+	void draw(); //SFML
   
 	inline void setValue(int val) { value = val; }
 	inline void setIsFlipped(bool isFlip) { isFlipped = isFlip; }
