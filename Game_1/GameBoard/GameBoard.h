@@ -13,4 +13,3 @@ public:
 	bool checkWin();
 	void draw();
 };
-
