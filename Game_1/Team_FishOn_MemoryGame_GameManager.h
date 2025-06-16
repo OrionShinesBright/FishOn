@@ -1,4 +1,6 @@
 #pragma once
+#include <SFML/Graphics.hpp>
+#include <SFML/Window.hpp>
 #include "Team_FishOn_MemoryGame_GameBoard.h"
 #include "Team_FishOn_MemoryGame_Player.h"
 
@@ -21,6 +23,7 @@ private:
 	int currentPlayer;
 
 public:
+<<<<<<< HEAD
 	GameManager() : currentPlayer(0) {
 		players[0] = Player();
 		players[1] = Player();
@@ -30,6 +33,12 @@ public:
 	}
 	void startGame(int r, int c);
 	void processMove(int r1, int c1, int r2, int c2);
+=======
+	GameManager();
+  
+	void startGame();
+	void processMove();
+>>>>>>> 6722309473f9e89e0326b1eb9147a29b8a8350d8
 	void switchPlayer();
 	bool isGameOver();
 
@@ -49,4 +58,3 @@ public:
 		currentPlayer = num;
 	}
 };
-
