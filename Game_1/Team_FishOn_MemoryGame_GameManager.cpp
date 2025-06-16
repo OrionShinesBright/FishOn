@@ -1,5 +1,11 @@
 #include "Team_FishOn_MemoryGame_GameManager.h"
 
+GameManager::GameManager() : currentPlayer(0){
+    players[0] = Player();
+    players[1] = Player();
+    board = GameBoard();
+}
+
 void GameManager::startGame()
 {
 	board.initializeBoard();
@@ -8,7 +14,6 @@ void GameManager::startGame()
 
 void GameManager::processMove()
 {
-
 }
 
 void GameManager::switchPlayer()
