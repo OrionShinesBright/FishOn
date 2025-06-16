@@ -1,14 +1,17 @@
 #pragma once
-#include <SFML/Graphics.hpp>
-#include <SFML/Window.hpp>
+
+#include "SFML/Window.hpp"
+#include "SFML/Graphics.hpp"
+
 #include "Team_FishOn_MemoryGame_GameBoard.h"
 #include "Team_FishOn_MemoryGame_Player.h"
 
+using namespace sf;
 
 /*****************************************************
 * TEAM: FishOn										 
-* MEMBERS:		1. SYED HAIDER ALI JAFFRI		24L-0		 
-*			2. WALEED BIN OMER			24L-0		 
+* MEMBERS:		1. SYED HAIDER ALI JAFRI		24L-0882		 
+*			2. WALEED BIN OMER			24L-0571		 
 *			3. MUHAMMAD RAFAY			24L-0649	 
 *	   MEMORY MATCHING GAME - IDEAL HACKATHON		 
 *****************************************************/
@@ -23,7 +26,6 @@ private:
 	int currentPlayer;
 
 public:
-<<<<<<< HEAD
 	GameManager() : currentPlayer(0) {
 		players[0] = Player();
 		players[1] = Player();
@@ -33,20 +35,14 @@ public:
 	}
 	void startGame(int r, int c);
 	void processMove(int r1, int c1, int r2, int c2);
-=======
-	GameManager();
-  
-	void startGame();
-	void processMove();
->>>>>>> 6722309473f9e89e0326b1eb9147a29b8a8350d8
 	void switchPlayer();
 	bool isGameOver();
 
 	GameBoard& getBoard() {
 		return board;
 	}
-	Player& getPlayers(int i) {
-		return players[i];
+	Player* getPlayers() {
+		return players;
 	}
 	inline int getCurrentPlayer() { return currentPlayer; }
 

@@ -1,24 +1,45 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
+#include "Team_FishOn_MemoryGame_Card.h"
 int main() {
-        sf::RenderWindow window(sf::VideoMode(170, 225, 32), "Card");
-        sf::Texture texture;
-        texture.loadFromFile("card.png");
-        sf::Sprite sprite(texture);
-        while (window.isOpen()) {
+        Card card1(1);
+
+
+
+
+        sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML works!");
+
+        sf::Vector2i globalPosition = sf::Mouse::getPosition();
+
+        while (window.isOpen())
+        {
                 sf::Event event;
-                while (window.pollEvent(event)) {
-                        if (event.type == sf::Event::Closed) {
-                                window.close();
+                while (window.pollEvent(event))
+                {
+                        if (event.type == sf::Event::Closed)
+                                window.close(); 
+                        
+                        if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)
+                        {
+                                sf::Vector2f mousePos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
+
+                                if (card1.getSprite().getGlobalBounds().contains(mousePos))
+                                {
+                                        card1.flip();
+                                }
                         }
                 }
-                for (int s = 100; s >= 0; s--) {
-                        sprite.setScale(s * 0.01, 1);
-                        sprite.setPosition(window.getSize().x / 2 - sprite.getGlobalBounds().width / 2, 0);
-                        window.clear();
-                        window.draw(sprite);
-                        window.display();
-                }
+
+
+
+
+
+
+                card1.update();
+                window.clear();
+                card1.draw(window);
+                window.display();
         }
+
         return 0;
 }
