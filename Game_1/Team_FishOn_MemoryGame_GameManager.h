@@ -1,11 +1,12 @@
 #pragma once
+
 #include "SFML/Window.hpp"
 #include "SFML/Graphics.hpp"
-using namespace sf;
 
 #include "Team_FishOn_MemoryGame_GameBoard.h"
 #include "Team_FishOn_MemoryGame_Player.h"
 
+using namespace sf;
 
 /*****************************************************
 * TEAM: FishOn										 
@@ -21,15 +22,23 @@ class GameManager
 private:
 	GameBoard board;
 	Player players[2];
+	int attempts[2]; //Number of attempts per player (till matching pair found)
 	int currentPlayer;
 
 public:
-	void startGame();
-	void processMove();
+	GameManager() : currentPlayer(0) {
+		players[0] = Player();
+		players[1] = Player();
+		attempts[0] = 0;
+		attempts[1] = 0;
+		board = GameBoard();
+	}
+	void startGame(int r, int c);
+	void processMove(int r1, int c1, int r2, int c2);
 	void switchPlayer();
 	bool isGameOver();
 
-	GameBoard getBoard() {
+	GameBoard& getBoard() {
 		return board;
 	}
 	Player* getPlayers() {
@@ -45,4 +54,3 @@ public:
 		currentPlayer = num;
 	}
 };
-

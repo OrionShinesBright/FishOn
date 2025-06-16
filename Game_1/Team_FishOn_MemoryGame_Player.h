@@ -4,6 +4,7 @@
 using namespace sf;
 
 #include <iostream>
+#include <fstream>
 using namespace std;
 
 /*****************************************************
@@ -22,6 +23,8 @@ private:
 	int gamesWon;
 
 public:
+	Player() : name(""), score(0), gamesWon(0) {}
+	Player(string n, int s, int w) : name(n), score(s), gamesWon(w) {}
 	void updateScore(int points);
 	void incrementWins();
 	void displayStats();
