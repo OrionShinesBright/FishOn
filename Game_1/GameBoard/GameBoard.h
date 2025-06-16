@@ -1,15 +1,18 @@
 #pragma once
-#include "../Card/Card.h"
 
+#include "Card.h"
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
 
 /*****************************************************
-* TEAM: FishOn										 *
-* MEMBERS:	1. SYED HAIDER ALI JAFFRI	24L-0		 *
-*			2. WALEED BIN OMER			24L-0		 *
-*			3. MUHAMMAD RAFAY			24L-0649	 *
-*	   MEMORY MATCHING GAME - IDEAL HACKATHON		 *
+* TEAM: FishOn										 
+* MEMBERS:	1. SYED HAIDER ALI JAFFRI	24L-0		 
+*			2. WALEED BIN OMER			24L-0		 
+*			3. MUHAMMAD RAFAY			24L-0649	 
+*	   MEMORY MATCHING GAME - IDEAL HACKATHON		 
 *****************************************************/
-
 
 const int MAX_SIZE = 8;
 
@@ -17,7 +20,7 @@ class GameBoard
 {
 private:
 	Card cards[MAX_SIZE][MAX_SIZE];
-	int rows, cols;
+	int rows, cols; //both of these variables depend on the difficulty. Initialized using setters
 
 public:
 	void initializeBoard();
@@ -25,12 +28,13 @@ public:
 	bool checkWin();
 	void draw();
 
-	Card getCards() {
-		return cards;
+	Card& getCards(int r, int c) {
+		return cards[r][c];
 	}
 	inline int getRows() { return rows; }
 	inline int getCols() { return cols; }
 
+	/*
 	void setCards(int row, int col, int val)
 		//Sets one element of the cards array, by taking matrix indices
 	{
@@ -38,8 +42,9 @@ public:
 			std::cout << "Enter a valid matrix address!\n";
 			return;
 		}
-		cards[row][col] = val;
+		cards[row][col] = Card(val);
 	}
+	*/
 	inline void setRows(int row) { rows = row; }
 	inline void setCols(int col) { cols = col; }
 };

@@ -1,16 +1,14 @@
 #pragma once
-#include <iostream>
-
+constexpr int MAX_SIZE = 8;
 
 /*****************************************************
-* TEAM: FishOn										 *
-* MEMBERS:	1. SYED HAIDER ALI JAFFRI	24L-0		 *
-*			2. WALEED BIN OMER			24L-0		 *
-*			3. MUHAMMAD RAFAY			24L-0649	 *
-*	   MEMORY MATCHING GAME - IDEAL HACKATHON		 *
+* TEAM: FishOn										                   
+* MEMBERS:	1. SYED HAIDER ALI JAFFRI	24L-0
+*			2. WALEED BIN OMER			24L-0		
+*			3. MUHAMMAD RAFAY			24L-0649	 
+*	   MEMORY MATCHING GAME - IDEAL HACKATHON		
 *****************************************************/
-
-
+  
 class Card
 {
 private:
@@ -19,11 +17,11 @@ private:
 	bool isMatched;
 
 public:
+	Card(int val = -1) : value(val), isFlipped(false), isMatched(false) {}
 	void flip();
-
-	bool checkMatch(Card other);
+	bool checkMatch(Card& other);
 	void draw();
-
+  
 	inline void setValue(int val) { value = val; }
 	inline void setIsFlipped(bool isFlip) { isFlipped = isFlip; }
 	inline void setIsMatched(bool isMat) { isMatched = isMat; }
