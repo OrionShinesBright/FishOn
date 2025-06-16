@@ -23,7 +23,7 @@ private:
 
 public:
 	GameManager();
-
+  
 	void startGame();
 	void processMove();
 	void switchPlayer();

@@ -14,7 +14,7 @@ using namespace std;
 *	   MEMORY MATCHING GAME - IDEAL HACKATHON		 
 *****************************************************/
 
-const int MAX_SIZE = 8;
+//const int MAX_SIZE = 8;
 
 class GameBoard
 {
@@ -23,6 +23,7 @@ private:
 	int rows, cols; //both of these variables depend on the difficulty. Initialized using setters
 
 public:
+	GameBoard(int r = 0, int c = 0) : rows(r), cols(c) {}
 	void initializeBoard();
 	void shuffleCards();
 	bool checkWin();
