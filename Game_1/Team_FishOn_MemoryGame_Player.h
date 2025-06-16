@@ -1,11 +1,15 @@
 #pragma once
+#include "SFML/Window.hpp"
+#include "SFML/Graphics.hpp"
+using namespace sf;
+
 #include <iostream>
 using namespace std;
 
 /*****************************************************
 * TEAM: FishOn										 
-* MEMBERS:		1. SYED HAIDER ALI JAFFRI		24L-0		 
-*			2. WALEED BIN OMER			24L-0		 
+* MEMBERS:		1. SYED HAIDER ALI JAFRI		24L-0882		 
+*			2. WALEED BIN OMER			24L-0571		 
 *			3. MUHAMMAD RAFAY			24L-0649	 
 *	   MEMORY MATCHING GAME - IDEAL HACKATHON		 
 *****************************************************/

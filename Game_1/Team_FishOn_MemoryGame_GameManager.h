@@ -1,12 +1,16 @@
 #pragma once
+#include "SFML/Window.hpp"
+#include "SFML/Graphics.hpp"
+using namespace sf;
+
 #include "Team_FishOn_MemoryGame_GameBoard.h"
 #include "Team_FishOn_MemoryGame_Player.h"
 
 
 /*****************************************************
 * TEAM: FishOn										 
-* MEMBERS:		1. SYED HAIDER ALI JAFFRI		24L-0		 
-*			2. WALEED BIN OMER			24L-0		 
+* MEMBERS:		1. SYED HAIDER ALI JAFRI		24L-0882		 
+*			2. WALEED BIN OMER			24L-0571		 
 *			3. MUHAMMAD RAFAY			24L-0649	 
 *	   MEMORY MATCHING GAME - IDEAL HACKATHON		 
 *****************************************************/
@@ -28,7 +32,7 @@ public:
 	GameBoard getBoard() {
 		return board;
 	}
-	Player getPlayers() {
+	Player* getPlayers() {
 		return players;
 	}
 	inline int getCurrentPlayer() { return currentPlayer; }
