@@ -14,5 +14,21 @@ public:
 	void processMove();
 	void switchPlayer();
 	bool isGameOver();
+
+	GameBoard getBoard() {
+		return board;
+	}
+	Player getPlayers() {
+		return players;
+	}
+	inline int getCurrentPlayer() { return currentPlayer; }
+
+	void setPlayers(int index, Player& player) {
+		players[index] = player;
+	}
+	void setCurrentPlayer(int num) {
+		if (!(num < 2 && num >= 0)) { std::cout << "Invalid Player!\n"; return; }
+		currentPlayer = num;
+	}
 };
 
