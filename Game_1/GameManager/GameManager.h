@@ -15,4 +15,3 @@ public:
 	void switchPlayer();
 	bool isGameOver();
 };
-

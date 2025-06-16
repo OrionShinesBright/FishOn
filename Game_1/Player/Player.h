@@ -14,4 +14,3 @@ public:
 	void incrementWins();
 	void displayStats();
 };
-
