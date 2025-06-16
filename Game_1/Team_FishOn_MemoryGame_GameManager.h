@@ -20,6 +20,11 @@ private:
 	int currentPlayer;
 
 public:
+	GameManager() : currentPlayer(0) {
+		players[0] = Player();
+		players[1] = Player();
+		board = GameBoard();
+	}
 	void startGame();
 	void processMove();
 	void switchPlayer();
@@ -29,7 +34,7 @@ public:
 		return board;
 	}
 	Player getPlayers() {
-		return players;
+		return *players;
 	}
 	inline int getCurrentPlayer() { return currentPlayer; }
 
