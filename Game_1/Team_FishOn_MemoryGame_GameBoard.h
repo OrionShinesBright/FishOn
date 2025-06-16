@@ -17,7 +17,7 @@ using namespace std;
 *	   MEMORY MATCHING GAME - IDEAL HACKATHON		 
 *****************************************************/
 
-//const int MAX_SIZE = 8;
+const int MAX_SIZE = 8;
 
 class GameBoard
 {

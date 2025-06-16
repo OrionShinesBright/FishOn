@@ -1,17 +1,8 @@
 #include "Team_FishOn_MemoryGame_GameManager.h"
 #include <fstream>
 
-<<<<<<< HEAD
-void GameManager::startGame(int rows, int cols)
-=======
-GameManager::GameManager() : currentPlayer(0){
-    players[0] = Player();
-    players[1] = Player();
-    board = GameBoard();
-}
 
-void GameManager::startGame()
->>>>>>> 6722309473f9e89e0326b1eb9147a29b8a8350d8
+void GameManager::startGame(int rows, int cols)
 {
 	board.setRows(rows);
 	board.setCols(cols);
@@ -26,7 +17,7 @@ void GameManager::startGame()
 
 void GameManager::processMove(int r1, int c1, int r2, int c2)
 {
-<<<<<<< HEAD
+
 	Card& first = board.getCards(r1, c1);
 	Card& second = board.getCards(r2, c2);
 
@@ -43,8 +34,6 @@ void GameManager::processMove(int r1, int c1, int r2, int c2)
 		attempts[currentPlayer]++;
 		switchPlayer();
 	}
-=======
->>>>>>> 6722309473f9e89e0326b1eb9147a29b8a8350d8
 }
 
 void GameManager::switchPlayer()
