@@ -46,22 +46,24 @@ void GameManager::updateWindow(RenderWindow& window)
 {
 
 
-	
-	makeMove(window); //takes input, makes move, does win checks and switches to next player
-
-
-
 	char symbol = players[currentPlayer].getAvatarSymbol();
+	int row = currentCellY;
+	int col = currentCellX;
+	
+	makeMove(window); //makes move, does win checks and switches to next player
+
+
+
 	//draw
 	if (symbol == 'X')
 	{
-		crossSprites[xUsed].setPosition(board.getPosition(currentCellY, currentCellX));
+		crossSprites[xUsed].setPosition(board.getPosition(row, col));
 		window.draw(crossSprites[xUsed]);
 		xUsed++;
 	}
 	else if (symbol == 'O')
 	{
-		circleSprites[oUsed].setPosition(board.getPosition(currentCellY, currentCellX));
+		circleSprites[oUsed].setPosition(board.getPosition(row, col));
 		window.draw(circleSprites[oUsed]);
 		oUsed++;
 	}
