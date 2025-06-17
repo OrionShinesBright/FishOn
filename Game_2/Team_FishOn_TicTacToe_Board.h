@@ -6,7 +6,7 @@ using namespace std;
 using namespace sf;
 const int MAX_SIZE = 5;
 class Board {
-private:
+public:
 	int dimension;
 	char grid[MAX_SIZE][MAX_SIZE];
 	sf::RectangleShape rectangle;
@@ -29,9 +29,6 @@ public:
 		}
 
 
-
-
-
 		//Loading Board
 		boardTexture.loadFromFile("board.png");
 
@@ -42,9 +39,6 @@ public:
 		);
 		boardSprite.setOrigin(boardTexture.getSize().x / 2, boardTexture.getSize().y / 2);
 		boardSprite.setPosition(1920 / 2, 1080 / 2);
-
-
-
 
 
 		//Initializing cell width and height
