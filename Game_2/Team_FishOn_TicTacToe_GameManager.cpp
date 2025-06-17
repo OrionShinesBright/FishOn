@@ -88,7 +88,6 @@ void GameManager::makeMove(RenderWindow& window)
 	board.setGrid(currentCellY, currentCellX, players[currentPlayer].getAvatarSymbol()); //mark grid cell with player symbol
 
 
-
 	if (checkWinPlayer1())
 	{
 		endGameWin(0);
