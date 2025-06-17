@@ -10,12 +10,41 @@ const int WINDOW_HEIGHT = 1080;
 
 
 
+
+//Initialize Game
+ GameManager manager;
+
+
+
+
+
+void updateWinScreen(RenderWindow& window)
+{
+        RectangleShape background(Vector2f(WINDOW_WIDTH, WINDOW_HEIGHT));
+        background.setFillColor(manager.getPlayer(manager.getCurrentPlayer()).getAvatarColor());
+
+        Font winFont;
+        winFont.loadFromFile("Roboto-Black.ttf");
+
+        Text winText;
+        winText.setFont(winFont);
+        winText.setFillColor(Color::White);
+        string name = manager.getPlayer(manager.getCurrentPlayer()).getName();
+        winText.setString(name + " Wins!");
+        winText.setCharacterSize(260);
+        winText.setOrigin(winText.getGlobalBounds().getSize().x / 2, winText.getGlobalBounds().getSize().y / 2);
+        winText.setPosition(Vector2f(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2));
+
+        window.draw(background);
+        window.draw(winText);
+}
+
+
+      
 int main()
 {
         sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "SFML works!");
 
-        //Initialize Game
-        GameManager manager;
         
         
 
@@ -76,7 +105,7 @@ int main()
 
 
         
-        while (window.isOpen() && !manager.getGameEnd())
+        while (window.isOpen())
         {
                 sf::Event event;
                 while (window.pollEvent(event))
@@ -128,25 +157,35 @@ int main()
 
 
                 window.clear();
-                window.draw(background);
-                manager.getBoard().draw(window);
-                system("cls");
-                for (int i = 0; i < 3; i++)
+
+                if (!manager.getGameEnd()) //if game is running
                 {
-                        for (int j = 0; j < 3; j++)
-                        {
-                                std::cout << manager.getBoard().getGrid(i, j) << "\t";
-                        }
-                        std::cout << "\n";
+			window.draw(background);
+			manager.getBoard().draw(window);
+			system("cls");
+			for (int i = 0; i < 3; i++)
+			{
+				for (int j = 0; j < 3; j++)
+				{
+					std::cout << manager.getBoard().getGrid(i, j) << "\t";
+				}
+				std::cout << "\n";
+			}
+			for (int i = 0; i < 5; i++)
+			{
+				window.draw(manager.getXSprite(i));
+				window.draw(manager.getYSprite(i));
+			}
+			window.draw(scoreText);
+			window.draw(nameText);
+			window.draw(avatarText);
                 }
-                for (int i = 0; i < 5; i++)
+                else //if game has ended (win or draw)
                 {
-                        window.draw(manager.getXSprite(i));
-                        window.draw(manager.getYSprite(i));
+                        if (manager.checkWinPlayer1() || manager.checkWinPlayer2()) updateWinScreen(window);
+                        //else if (manager.checkWinPlayer2()) updateWinScreen2(window);
+                        //else updateDrawScreen(window);
                 }
-                window.draw(scoreText);
-                window.draw(nameText);
-                window.draw(avatarText);
                 window.display();
         }
 

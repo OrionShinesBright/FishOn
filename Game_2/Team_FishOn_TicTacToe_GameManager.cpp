@@ -50,7 +50,7 @@ void GameManager::updateWindow(RenderWindow& window)
 	int row = currentCellY;
 	int col = currentCellX;
 	
-	makeMove(window); //takes input, makes move, does win checks and switches to next player
+	makeMove(window); //makes move, does win checks and switches to next player
 
 
 
