@@ -12,7 +12,6 @@ void GameManager::updateWindow(RenderWindow& window)
 
 }
 
-
 void GameManager::makeMove(RenderWindow& window)
 {
 	//input
