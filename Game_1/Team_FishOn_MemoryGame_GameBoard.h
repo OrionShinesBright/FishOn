@@ -30,7 +30,7 @@ public:
 	void initializeBoard();
 	void shuffleCards();
 	bool checkWin();
-	void draw(); //SFML
+	void Draw(RenderWindow& window); //SFML
 
 	Card& getCards(int r, int c) {
 		return cards[r][c];

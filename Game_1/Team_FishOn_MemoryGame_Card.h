@@ -25,8 +25,7 @@ private:
 	Texture faceUpTexture;
 	Texture faceDownTexture;
 	RectangleShape cardRect;
-	const int CARD_WIDTH = 216;
-	const int CARD_HEIGHT = 270;
+
 
 	bool isFlipping = false;
 	bool isShrinking = true;
@@ -36,6 +35,11 @@ private:
 	
 
 public:
+
+	const int CARD_WIDTH = 216;
+	const int CARD_HEIGHT = 270;
+
+
 	Card();
 	Card(int val);
 	void operator=(const Card& other);
@@ -49,9 +53,17 @@ public:
 	inline void setValue(int val) { value = val; }
 	inline void setIsFlipped(bool isFlip) { isFlipped = isFlip; }
 	inline void setIsMatched(bool isMat) { isMatched = isMat; }
+	inline void setPosition(Vector2f position) { cardRect.setPosition(position); }
+	inline void setScale(float x, float y) { cardRect.setScale(x, y); }
+	inline void setCardPosition(const sf::Vector2f& position) { cardRect.setPosition(position); }
+	inline void setCardScale(float x, float y) { cardRect.setScale(x, y); }
 
 	inline int getValue() const { return value; }
 	inline bool getIsFlipped() const { return isFlipped; }
 	inline bool getIsMatched() const { return isMatched; }
 	inline RectangleShape getSprite() const { return cardRect; }
+	inline const Texture& getFaceUpTexture() const { return faceUpTexture; }
+	inline const Texture& getFaceDownTexture() const { return faceDownTexture; }
+
+	
 };

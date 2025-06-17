@@ -26,14 +26,16 @@ private:
 	int currentPlayer;
 
 public:
+
 	GameManager() : currentPlayer(0) {
-		players[0] = Player();
-		players[1] = Player();
+		//players[0] = Player();
+		//players[1] = Player();
 		attempts[0] = 0;
 		attempts[1] = 0;
-		board = GameBoard();
+		//board = GameBoard();
+		board.initializeBoard();
 	}
-	void startGame(int r, int c);
+	void startGame(int rows, int cols);
 	void processMove(int r1, int c1, int r2, int c2);
 	void switchPlayer();
 	bool isGameOver();
@@ -53,4 +55,6 @@ public:
 		if (!(num < 2 && num >= 0)) { std::cout << "Invalid Player!\n"; return; }
 		currentPlayer = num;
 	}
+
+	void drawGame(RenderWindow& window);
 };
