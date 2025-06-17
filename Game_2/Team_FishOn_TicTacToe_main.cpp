@@ -1,4 +1,5 @@
 #include <iostream>
+#define MAX_BOARD_SIZE 5
 
 int main() {
 	std::cout << "Hello, World!\n";
