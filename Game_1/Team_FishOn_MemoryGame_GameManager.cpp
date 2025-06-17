@@ -27,11 +27,18 @@ void GameManager::processMove(int r1, int c1, int r2, int c2)
 	second.flip();
 
 	if (first.checkMatch(second)) {
-		players[currentPlayer].updateScore((100 / attempts[currentPlayer])); //Different value of scores can be done by considering number of attempts
-		attempts[currentPlayer] = 0;
+		if (attempts[currentPlayer = 0]) players[currentPlayer].updateScore(100); //this line prevents integer division by zero
+		else
+		{
+			players[currentPlayer].updateScore((100 / attempts[currentPlayer])); //Different value of scores can be done by considering number of attempts
+			attempts[currentPlayer] = 0;
+		}
 	}
 	else {
 		attempts[currentPlayer]++;
+		//sf::sleep(sf::seconds(2)); // 1-second delay to show the flipped cards
+		//first.flip();
+		//second.flip();
 		switchPlayer();
 	}
 }
@@ -50,4 +57,23 @@ bool GameManager::isGameOver()
 		return true;
 	}
 	return false;
+}
+
+
+void GameManager::drawGame(RenderWindow& window)
+{
+	//draw background
+	sf::RectangleShape background;
+	background.setSize(sf::Vector2f(1920, 1080));
+	background.setPosition(0, 0);
+	background.setFillColor(Color::Blue);
+	window.draw(background);
+
+
+	players[0].displayStats(window, 0);
+	players[1].displayStats(window, 1);
+
+
+
+	board.Draw(window);
 }

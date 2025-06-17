@@ -20,9 +20,27 @@ void Player::incrementWins()
 	}
 }
 
-void Player::displayStats()
+void Player::displayStats(RenderWindow& window, int playerNum)
 {
-	cout << "Player: " << name << "\n";
-	cout << "Score: " << score << "\n";
-	cout << "Games Won: " << gamesWon << "\n";
+	
+
+	// Prepare text
+	Font textFont;
+	textFont.loadFromFile("Roboto-Black.ttf");
+	Text scoreText;
+	scoreText.setFont(textFont);
+	scoreText.setString("Player: " + name + "\nScore: " + std::to_string(score) + "\nGames Won: " + std::to_string(gamesWon));
+	scoreText.setCharacterSize(50);
+	scoreText.setFillColor(Color::White);
+	if (playerNum == 0)
+	{
+		scoreText.setPosition(50, 20);
+	}
+	else
+	{
+		scoreText.setPosition(1400, 20);
+	}
+
+
+	window.draw(scoreText);
 }
