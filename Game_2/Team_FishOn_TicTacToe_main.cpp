@@ -16,6 +16,9 @@ int main() {
    	cuz I have already made this function check what szed board we have.. this is important
     	cuz smol board == weak ai.. so.. you dont need to handle that here. it is already
      	handled in the class itself.
+
+      	NOTE: this `move` variable will then need to be used with whatever movemaking function we have, in order to ACTUALLY
+       	implemement the move on the board.
   	*/
 	
 	return 0;
