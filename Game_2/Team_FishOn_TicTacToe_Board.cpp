@@ -1,5 +1,6 @@
 #include "Team_FishOn_TicTacToe_Board.h"
 
+
 int Board::getDimension() const
 {
     return dimension;
@@ -10,14 +11,14 @@ void Board::setDimension(int newDimension)
     dimension = newDimension;
 }
 
-int Board::getGrid(int row, int col) const
+char Board::getGrid(int row, int col) const
 {
     if (row < 0 || row >= dimension || col < 0 || col >= dimension)
         return -1; // Invalid cell
     return grid[row][col];
 }
 
-void Board::setGrid(int row, int col, int value)
+void Board::setGrid(int row, int col, char value)
 {
     if (row >= 0 && row < dimension && col >= 0 && col < dimension)
     {
@@ -31,7 +32,7 @@ bool Board::isFull() const
     {
         for (int j = 0; j < dimension; ++j)
         {
-            if (grid[i][j] == 0) // Assuming 0 means empty cell
+            if (grid[i][j] == '-') 
                 return false;
         }
     }
@@ -89,4 +90,33 @@ bool Board::checkWin(int player) const
     
     // Check diagonals
     return checkDiagonal(player) || checkAntiDiagonal(player);
+}
+
+bool Board::isEmpty(int i, int j)
+{
+        if (grid[i][j] == '-') return true;
+        return false;
+}
+
+void Board::drawMark(int, int, int)
+{
+
+}
+
+void Board::draw(sf::RenderWindow& window)
+{
+        window.draw(boardSprite);
+}
+
+void Board::initializePositions()
+{
+        for (int i = 0; i < 3; i++)
+        {
+
+                for (int j = 0; j < 3; j++)
+                {
+                        positions[i][j] = Vector2f(boardSprite.getPosition().x - (boardTexture.getSize().x / 2) + 50, boardSprite.getPosition().y - (boardTexture.getSize().y / 2) + 50);
+                        positions[i][j] += Vector2f(j * cellWidth, i * cellHeight);
+                }
+        }
 }
