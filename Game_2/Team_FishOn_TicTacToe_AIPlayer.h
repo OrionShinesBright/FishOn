@@ -1,6 +1,8 @@
 #pragma once
 #include <SFML/System.hpp>
 
+#define MAX_BOARD_SIZE 5
+
 class AIPlayer {
 private:
     char aiSymbol, playerSymbol;

@@ -1,6 +1,8 @@
-#include "AIPlayer.h"
+#include "Team_FishOn_TicTacToe_AIPlayer.h"
 #include <cstdlib>
 #include <ctime>
+
+#define MAX_BOARD_SIZE 5
 
 AIPlayer::AIPlayer(char aiSymbol, char playerSymbol)
     : aiSymbol(aiSymbol), playerSymbol(playerSymbol) {

@@ -19,7 +19,7 @@ void GameManager::makeMove(RenderWindow& window)
 	//check if grid cell empty
 	//if filled, return
 
-	board.grid[i][j] = players[currentPlayer].getSymbol(); //mark grid cell with player symbol
+	//board.grid[i][j] = players[currentPlayer].getSymbol(); //mark grid cell with player symbol
 	if (checkWinPlayer1())
 	{
 		endGameWin(0);
