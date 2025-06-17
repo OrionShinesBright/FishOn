@@ -2,8 +2,8 @@
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
-#include "Board.h"
-#include "Player.h"
+#include "Team_FishOn_TicTacToe_Board.h"
+#include "Team_FishOn_TicTacToe_Player.h"
 
 using namespace sf;
 
