@@ -27,7 +27,7 @@ public:
 	Player(string n, int s, int w) : name(n), score(s), gamesWon(w) {}
 	void updateScore(int points);
 	void incrementWins();
-	void displayStats();
+	void displayStats(RenderWindow& window, int playerNum);
 
 	inline void setName(string NAME) { name = NAME; }
 	inline void setScore(int SCORE) { score = SCORE; }
