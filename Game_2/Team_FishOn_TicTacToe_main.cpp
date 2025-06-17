@@ -2,11 +2,11 @@
 #include <SFML/Window.hpp>
 #include "Team_FishOn_TicTacToe_GameManager.h"
 #include <iostream>
+#include <string>
 
 
 const int WINDOW_WIDTH = 1920;
 const int WINDOW_HEIGHT = 1080;
-
 
 
 
@@ -59,7 +59,20 @@ int main()
         scoreText.setCharacterSize(60);
         scoreText.setFillColor(sf::Color::Black);
         scoreText.setPosition(10, 10);
-        scoreText.setString("Player 1's Turn");
+       
+
+
+        sf::Text nameText;
+        nameText.setFont(font);
+        nameText.setCharacterSize(60);
+        nameText.setFillColor(sf::Color::Black);
+        nameText.setPosition(10, 80);
+
+
+        sf::Text avatarText;
+        avatarText.setFont(font);
+        avatarText.setCharacterSize(120);
+        avatarText.setPosition(10, 160);
 
 
         
@@ -94,6 +107,24 @@ int main()
                         }
                 }
 
+                //update text
+                if (manager.getCurrentPlayer() == 0)
+                {
+                        scoreText.setString("Player 1's Turn");
+                }
+                else
+                {
+                        scoreText.setString("Player 2's Turn");
+                }
+
+                string name = manager.getPlayer(manager.getCurrentPlayer()).getName();
+                nameText.setString("Name:\t" + name);
+
+                avatarText.setFillColor(manager.getPlayer(manager.getCurrentPlayer()).getAvatarColor());
+                avatarText.setString(manager.getPlayer(manager.getCurrentPlayer()).getAvatarSymbol());
+
+
+
 
 
                 window.clear();
@@ -114,6 +145,8 @@ int main()
                         window.draw(manager.getYSprite(i));
                 }
                 window.draw(scoreText);
+                window.draw(nameText);
+                window.draw(avatarText);
                 window.display();
         }
 

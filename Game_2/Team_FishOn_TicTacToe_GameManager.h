@@ -44,6 +44,7 @@ public:
 
 	inline Board& getBoard() { return board; }
 	inline Player& getPlayer(int code) { return players[code]; }
+	inline int getCurrentPlayer() { return currentPlayer; }
 	inline int getCurrentCellX() { return currentCellX; }
 	inline int getCurrentCellY() { return currentCellY; }
 	inline bool getGameEnd() { return gameEnd; }
