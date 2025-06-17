@@ -6,12 +6,12 @@
 using namespace std;
 const int MAX_SIZE = 5;
 class Board {
-private:
+public:
 	int dimension;
 	int grid[MAX_SIZE][MAX_SIZE];
 	sf::RectangleShape rectangle;
 	sf::Text text;
-public:
+	Board() = default;
 	Board(int dim) : dimension(dim) {
 		for (int i = 0; i < MAX_SIZE; i++) {
 			for (int j = 0; j < MAX_SIZE; j++) {

@@ -13,6 +13,7 @@ private:
 	fstream statsFile;
 	fstream achievementsFile;
 public:
+	Player(){}
 	Player(const string& playerName, char symbol, const sf::Color& color)
 		: name(playerName), avatarSymbol(symbol), avatarColor(color) {
 		statsFile.open("stats.txt", ios::in | ios::out | ios::app);
