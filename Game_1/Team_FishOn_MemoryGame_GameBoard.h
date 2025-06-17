@@ -1,4 +1,7 @@
 #pragma once
+#include "SFML/Window.hpp"
+#include "SFML/Graphics.hpp"
+using namespace sf;
 
 #include "Team_FishOn_MemoryGame_Card.h"
 #include <cstdlib>
@@ -8,8 +11,8 @@ using namespace std;
 
 /*****************************************************
 * TEAM: FishOn										 
-* MEMBERS:		1. SYED HAIDER ALI JAFFRI		24L-0		 
-*			2. WALEED BIN OMER			24L-0		 
+* MEMBERS:		1. SYED HAIDER ALI JAFRI		24L-0882		 
+*			2. WALEED BIN OMER			24L-0571		 
 *			3. MUHAMMAD RAFAY			24L-0649	 
 *	   MEMORY MATCHING GAME - IDEAL HACKATHON		 
 *****************************************************/
@@ -23,10 +26,11 @@ private:
 	int rows, cols; //both of these variables depend on the difficulty. Initialized using setters
 
 public:
+	GameBoard(int r = 0, int c = 0) : rows(r), cols(c) {}
 	void initializeBoard();
 	void shuffleCards();
 	bool checkWin();
-	void draw();
+	void Draw(RenderWindow& window); //SFML
 
 	Card& getCards(int r, int c) {
 		return cards[r][c];
