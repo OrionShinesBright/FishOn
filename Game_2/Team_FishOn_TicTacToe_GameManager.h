@@ -4,6 +4,7 @@
 #include <SFML/Window.hpp>
 #include "Team_FishOn_TicTacToe_Board.h"
 #include "Team_FishOn_TicTacToe_Player.h"
+#include "Team_FishOn_TicTacToe_AIPlayer.h"
 
 using namespace sf;
 
@@ -26,16 +27,7 @@ private:
 
 
 public:
-	//GameManager() = default;
-	//GameManager(GameManager&&) = default;
-	//GameManager& operator=(GameManager&&) = default;
-
-	//// Disallow copy
-	//GameManager(const GameManager&) = delete;
-	//GameManager& operator=(const GameManager&) = delete;
 	GameManager();
-	//GameManager(const GameManager& other);
-	//GameManager& operator=(const GameManager& other);
 
 	void updateWindow(RenderWindow& window);
 
