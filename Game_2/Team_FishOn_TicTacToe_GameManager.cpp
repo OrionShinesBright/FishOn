@@ -42,6 +42,34 @@ GameManager::GameManager()
 	xUsed = oUsed = 0;
 }
 
+
+//GameManager& GameManager::operator=(const GameManager& other)
+//{
+//	if (this == &other)
+//		return *this;
+//
+//	board = other.board;
+//	currentPlayer = other.currentPlayer;
+//	currentCellX = other.currentCellX;
+//	currentCellY = other.currentCellY;
+//	gameEnd = other.gameEnd;
+//	xTexture = other.xTexture;
+//	oTexture = other.oTexture;
+//	xUsed = other.xUsed;
+//	oUsed = other.oUsed;
+//
+//	//players[0] = other.players[0];
+//	//players[1] = other.players[1];
+//
+//	for (int i = 0; i < 5; ++i) {
+//		crossSprites[i] = other.crossSprites[i];
+//		circleSprites[i] = other.circleSprites[i];
+//	}
+//
+//	return *this;
+//}
+
+
 void GameManager::updateWindow(RenderWindow& window)
 {
 
@@ -114,12 +142,23 @@ void GameManager::makeMove(RenderWindow& window)
 void GameManager::endGameWin(int playerIndex)
 {
 	gameEnd = true;
+	players[playerIndex].logWin();
+	players[!playerIndex].logLoss();
 	//player wins
+
+
+	std::cout << players[playerIndex].getName() << "\n";
+	std::cout << players[playerIndex].readStats();
+	std::cout << "_______________________________\n";
+	std::cout << players[!playerIndex].getName() << "\n";
+	std::cout << players[!playerIndex].readStats();
 }
 
 void GameManager::endGameDraw()
 {
 	gameEnd = true;
+	players[0].logDraw();
+	players[1].logDraw();
 	//draw
 }
 
