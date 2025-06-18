@@ -1,9 +1,8 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include "Team_FishOn_TicTacToe_GameManager.h"
-#include <iostream>
 #include <string>
-
+#include "Team_FishOn_TicTacToe_AIPlayer.h"
 
 
 const int WINDOW_WIDTH = 1920;
@@ -91,6 +90,8 @@ void updateDrawScreen(RenderWindow& window, bool& gotoEndFlag)
 }
 
 
+bool waitingForAI = false;
+AIPlayer ai('O', 'X');  // Only onceAIPlayer ai('O', 'X');
 
       
 int main()
@@ -206,6 +207,8 @@ int main()
         
         bool initializeEndAssetsFlag = true;
 
+
+
         while (window.isOpen())
         {
                 while (isModeSelect)
@@ -241,7 +244,6 @@ int main()
                 
                 if (readFilesFlag & gotoEndFlag)
                 {
-                        cout << "Reading\n";
                         stats1 = manager.getPlayer(0).getName() + "\n" + manager.getPlayer(0).readStats();
                         stats2 = manager.getPlayer(1).getName() + "\n" + manager.getPlayer(1).readStats();
                         readFilesFlag = false;
@@ -337,14 +339,6 @@ int main()
                                 window.draw(background);
                                 manager.getBoard().draw(window);
                                 system("cls");
-                                for (int i = 0; i < 3; i++)
-                                {
-                                        for (int j = 0; j < 3; j++)
-                                        {
-                                                std::cout << manager.getBoard().getGrid(i, j) << "\t";
-                                        }
-                                        std::cout << "\n";
-                                }
                                 for (int i = 0; i < 5; i++)
                                 {
                                         window.draw(manager.getXSprite(i));
@@ -360,6 +354,137 @@ int main()
                                 else updateDrawScreen(window, gotoEndFlag);
 
                         }
+                }
+                else if (aiFlag && !gotoEndFlag)
+                {
+                        bool isAiTurn = false;
+
+                        sf::Event event;
+                        while (window.pollEvent(event))
+                        {
+                                if (event.type == sf::Event::Closed)
+                                        window.close();
+
+
+                                if (event.type == sf::Event::MouseButtonReleased &&
+                                        event.mouseButton.button == sf::Mouse::Left &&
+                                        !manager.getGameEnd() &&
+                                        manager.getCurrentPlayer() == 0)  // Only allow if it's player’s turn                                {
+                                {
+                                        sf::Vector2f mousePos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
+
+                                        sf::Vector2f boardPos = manager.getBoard().getBoardSprite().getPosition();
+                                        sf::FloatRect boardBounds = manager.getBoard().getBoardSprite().getGlobalBounds();
+
+                                        float cellWidth = boardBounds.width / 3;
+                                        float cellHeight = boardBounds.height / 3;
+
+                                        int col = static_cast<int>((mousePos.x - boardBounds.left) / cellWidth);
+                                        int row = static_cast<int>((mousePos.y - boardBounds.top) / cellHeight);
+
+                                        if (row >= 0 && row < 3 && col >= 0 && col < 3 && manager.getBoard().isEmpty(row, col))
+                                        {
+                                                manager.setCurrentCellX(col);
+                                                manager.setCurrentCellY(row);
+                                                manager.updateWindow(window);
+                                        }
+
+
+                                        // After player moves, check if it's AI's turn now
+                                        if (manager.getCurrentPlayer() == 1)
+                                                waitingForAI = true;
+                                }
+                        }
+
+                      
+
+                        manager.getPlayer(1).setName("Computer");
+
+
+
+                        //update text
+                        string name;
+                        if (manager.getCurrentPlayer() == 0)
+                        {
+                                scoreText.setString("Player 1's Turn");
+                                name = manager.getPlayer(0).getName();
+                        }
+                        else
+                        {
+                                scoreText.setString("Computer's Turn");
+                                name = "Computer";
+                        }
+
+                        nameText.setString("Name:\t" + name);
+
+                        avatarText.setFillColor(manager.getPlayer(manager.getCurrentPlayer()).getAvatarColor());
+                        avatarText.setString(manager.getPlayer(manager.getCurrentPlayer()).getAvatarSymbol());
+
+
+
+
+
+                      // AI move section
+if (waitingForAI && manager.getCurrentPlayer() == 1 && !manager.getGameEnd())
+{
+    sf::sleep(sf::seconds(0.5f)); // Optional pause
+
+    char grid[5][5];
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            grid[i][j] = manager.getBoard().getGrid(i, j);
+        }
+    }
+
+    Vector2i move = ai.getBestMove(grid, 3);
+    manager.setCurrentCellX(move.x);
+    manager.setCurrentCellY(move.y);
+    manager.updateWindow(window);
+
+    waitingForAI = false;
+}
+
+
+
+
+
+
+
+
+
+                        window.clear();
+
+                        if (!manager.getGameEnd()) //if game is running
+                        {
+                                window.draw(background);
+                                manager.getBoard().draw(window);
+                                system("cls");
+                                for (int i = 0; i < 5; i++)
+                                {
+                                        window.draw(manager.getXSprite(i));
+                                        window.draw(manager.getYSprite(i));
+                                }
+                                window.draw(scoreText);
+                                window.draw(nameText);
+                                window.draw(avatarText);
+                        }
+                        else //if game has ended (win or draw)
+                        {
+                                if (manager.checkWinPlayer1() || manager.checkWinPlayer2()) updateWinScreen(window, gotoEndFlag);
+                                else updateDrawScreen(window, gotoEndFlag);
+
+                        }
+
+
+
+
+
+
+
+
+
                 }
                 else
                 {
@@ -387,7 +512,6 @@ int main()
 
                       
                 }
-                cout << "End screen drawn\n";
                 window.display();
         }
 
