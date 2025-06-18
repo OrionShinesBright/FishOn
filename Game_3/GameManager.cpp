@@ -1,4 +1,5 @@
 #include "GameManager.h"
+#include <iostream>
 
 void GameManager::updateGame()
 {
@@ -14,6 +15,8 @@ void GameManager::updateGame()
 	}
 
 	handleCollisions();
+
+	std::cout << player.getScore() << "\n";
 }
 
 void GameManager::handleCollisions()
@@ -61,31 +64,35 @@ void GameManager::handleCollisions()
 			// Mark the brick as destroyed
 			brick.setIsDestroyed(true);
 
-			// Reflect the ball depending on where it hits
+			// Increment score
+			if (brick.getBrickType() == Brick::WOOD_BRICK) player.incrementScore(100);
+			else if (brick.getBrickType() == Brick::METAL_BRICK) player.incrementScore(200);
+			else player.incrementScore(300);
 
-			// Determine the sides
-			float ballLeft   = ballBox.left;
-			float ballRight  = ballBox.left + ballBox.width;
-			float ballTop    = ballBox.top;
-			float ballBottom = ballBox.top + ballBox.height;
 
-			float brickLeft   = brickBox.left;
-			float brickRight  = brickBox.left + brickBox.width;
-			float brickTop    = brickBox.top;
-			float brickBottom = brickBox.top + brickBox.height;
+			// Find sides
+			double ballLeft   = ballBox.left;
+			double ballRight  = ballBox.left + ballBox.width;
+			double ballTop    = ballBox.top;
+			double ballBottom = ballBox.top + ballBox.height;
+
+			double brickLeft   = brickBox.left;
+			double brickRight  = brickBox.left + brickBox.width;
+			double brickTop    = brickBox.top;
+			double brickBottom = brickBox.top + brickBox.height;
 
 			// Find overlap distances
-			float overlapLeft   = ballRight - brickLeft;
-			float overlapRight  = brickRight - ballLeft;
-			float overlapTop    = ballBottom - brickTop;
-			float overlapBottom = brickBottom - ballTop;
+			double overlapLeft   = ballRight - brickLeft;
+			double overlapRight  = brickRight - ballLeft;
+			double overlapTop    = ballBottom - brickTop;
+			double overlapBottom = brickBottom - ballTop;
 
 			// Choose smallest overlap to determine collision side
 			bool fromLeft   = overlapLeft < overlapRight;
 			bool fromTop    = overlapTop < overlapBottom;
 
-			float minOverlapX = fromLeft ? overlapLeft : overlapRight;
-			float minOverlapY = fromTop  ? overlapTop  : overlapBottom;
+			double minOverlapX = fromLeft ? overlapLeft : overlapRight;
+			double minOverlapY = fromTop  ? overlapTop  : overlapBottom;
 
 			// Bounce
 			if (minOverlapX < minOverlapY)

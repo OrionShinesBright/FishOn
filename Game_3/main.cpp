@@ -1,4 +1,4 @@
-#include <SFML/Graphics.hpp>
+﻿#include <SFML/Graphics.hpp>
 #include "GameManager.h"
 
 const int WINDOW_WIDTH = 1920;
@@ -11,6 +11,19 @@ int main()
 
         GameManager manager(15, 10);
 
+        Font font;
+        font.loadFromFile("Roboto-Black.ttf");
+
+        Text scoreText;
+        scoreText.setFont(font);
+        scoreText.setFillColor(Color::White);
+        scoreText.setPosition(0, 0);
+
+        Text highScoreText;
+        highScoreText.setFont(font);
+        highScoreText.setFillColor(Color::White);
+        highScoreText.setPosition(WINDOW_WIDTH - 100, 0);
+
         while (window.isOpen())
         {
                 sf::Event event;
@@ -21,7 +34,7 @@ int main()
                 }
 
 
-
+                //input
                 if (Keyboard::isKeyPressed(Keyboard::Left) || Keyboard::isKeyPressed(Keyboard::A))
                 {
                         manager.getPaddle().moveLeft();
@@ -34,11 +47,21 @@ int main()
 
 
 
+
+                //update score text
+                scoreText.setString("Score:\t" + std::to_string(manager.getPlayer().getScore()));
+                highScoreText.setString("High Score:\t" + std::to_string(manager.getPlayer().getHighScore()));
+                highScoreText.setPosition(WINDOW_WIDTH - highScoreText.getGlobalBounds().getSize().x, 0);
+
+
+
                 manager.updateGame();
 
 
                 window.clear();
                 manager.draw(window);
+                window.draw(scoreText);
+                window.draw(highScoreText);
                 window.display();
         }
 
