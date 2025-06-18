@@ -127,7 +127,6 @@ public:
 		if (row >= 0 && row < MAX_ROWS && col >= 0 && col < MAX_COLS)
 			bricks[row][col] = brick;
 	}
-	void setPlayer(const Player& p) { player = p; }
 	void setGameOver(bool status) { gameOver = status; }
 
 	// Getters
