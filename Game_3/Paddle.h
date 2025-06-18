@@ -22,7 +22,6 @@ public:
 		speed = 10.f;
 
 		paddle.setSize(Vector2f(width, height));
-		paddle.setFillColor(Color::Blue);
 		paddle.setOrigin(width / 2.f, height / 2.f);
 		paddle.setPosition(x, y);
 	}
@@ -47,6 +46,6 @@ public:
 	float getWidth() { return width; }
 	float getHeight() { return height; }
 	float getSpeed() { return speed; }
-	RectangleShape getRect() { return paddle; }
+	RectangleShape& getRect() { return paddle; }
 };
 

@@ -4,6 +4,7 @@
 #include "Player.h"
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
+#include <algorithm>
 #pragma once
 const int MAX_ROWS = 20;
 const int MAX_COLS = 20;
@@ -23,11 +24,25 @@ private:
 	int xBrickSpacing;
 	int yBrickSpacing;
 
+	RectangleShape background;
+
 
 public:
 
-	GameManager(int xBricks, int yBricks)
+	GameManager(int xBricks, int yBricks, Color backgroundColor)
 	{
+		background.setSize(Vector2f(1920, 1080));
+		background.setPosition(0, 0);
+		background.setFillColor(backgroundColor);
+
+		paddle.getRect().setFillColor((background.getFillColor().r +background.getFillColor().g + background.getFillColor().b) / 3 > 128 ? sf::Color(30, 30, 30) : sf::Color(225, 225, 225));
+
+		ball.getCircle().setFillColor(sf::Color(
+			255 - int(background.getFillColor().r),
+			255 - int(background.getFillColor().g),
+			255 - int(background.getFillColor().b)
+		));
+
 		this->xBricks = xBricks;
 		this->yBricks = yBricks;
 
@@ -140,6 +155,8 @@ public:
 	}
 
 	Player& getPlayer() { return player; }
+
+	RectangleShape& getBackground() { return background; }
 
 	bool isGameOver() const { return gameOver; }
 

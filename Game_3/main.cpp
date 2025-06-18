@@ -9,19 +9,19 @@ int main()
         sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Brick Breaker");
         window.setFramerateLimit(60);
 
-        GameManager manager(15, 10);
+        GameManager manager(15, 10, Color::Magenta);
 
         Font font;
         font.loadFromFile("Roboto-Black.ttf");
 
         Text scoreText;
         scoreText.setFont(font);
-        scoreText.setFillColor(Color::White);
+        scoreText.setFillColor((manager.getBackground().getFillColor().r + manager.getBackground().getFillColor().g + manager.getBackground().getFillColor().b) / 3 > 128 ? sf::Color(30, 30, 30) : sf::Color(225, 225, 225));
         scoreText.setPosition(0, 0);
 
         Text highScoreText;
         highScoreText.setFont(font);
-        highScoreText.setFillColor(Color::White);
+        highScoreText.setFillColor((manager.getBackground().getFillColor().r + manager.getBackground().getFillColor().g + manager.getBackground().getFillColor().b) / 3 > 128 ? sf::Color(30, 30, 30) : sf::Color(225, 225, 225));
         highScoreText.setPosition(WINDOW_WIDTH - 100, 0);
 
         while (window.isOpen())
@@ -51,7 +51,7 @@ int main()
                 //update score text
                 scoreText.setString("Score:\t" + std::to_string(manager.getPlayer().getScore()));
                 highScoreText.setString("High Score:\t" + std::to_string(manager.getPlayer().getHighScore()));
-                highScoreText.setPosition(WINDOW_WIDTH - highScoreText.getGlobalBounds().getSize().x, 0);
+                highScoreText.setPosition(WINDOW_WIDTH - highScoreText.getGlobalBounds().getSize().x - 100, 0);
 
 
 
