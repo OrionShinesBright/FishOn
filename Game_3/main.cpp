@@ -51,7 +51,7 @@ int main()
                 //update score text
                 scoreText.setString("Score:\t" + std::to_string(manager.getPlayer().getScore()));
                 highScoreText.setString("High Score:\t" + std::to_string(manager.getPlayer().getHighScore()));
-                highScoreText.setPosition(WINDOW_WIDTH - highScoreText.getGlobalBounds().getSize().x, 0);
+                highScoreText.setPosition(WINDOW_WIDTH - highScoreText.getGlobalBounds().getSize().x - 100, 0);
 
 
 
