@@ -23,7 +23,6 @@ public:
 		isActive = true;
 
 		ball.setRadius(radius);
-		ball.setFillColor(Color::Green); // default color, change if needed
 		ball.setOrigin(radius, radius);  // center origin
 		ball.setPosition(x, y);
 	}

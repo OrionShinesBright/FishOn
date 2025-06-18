@@ -112,6 +112,7 @@ void GameManager::handleCollisions()
 
 void GameManager::draw(RenderWindow& window)
 {
+	window.draw(background);
 	ball.draw(window);
 	paddle.draw(window);
 	
@@ -122,6 +123,7 @@ void GameManager::draw(RenderWindow& window)
 			bricks[i][j].draw(window);
 		}
 	}
+
 
 }
 
