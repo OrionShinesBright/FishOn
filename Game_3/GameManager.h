@@ -31,6 +31,8 @@ public:
 
 	GameManager(int xBricks, int yBricks, Color backgroundColor)
 	{
+		gameOver = false;
+
 		background.setSize(Vector2f(1920, 1080));
 		background.setPosition(0, 0);
 		background.setFillColor(backgroundColor);
@@ -131,6 +133,7 @@ public:
 	void handleCollisions();
 	void draw(RenderWindow& window);
 	void checkWinCondition();
+	void checkLoseCondition();
 	void startLevel();
 
 
