@@ -16,7 +16,14 @@ void GameManager::updateGame()
 
 	handleCollisions();
 
-	std::cout << player.getScore() << "\n";
+	paddle.setSpeed(paddle.getSpeed() * 1.00015);
+	ball.setVelocityX(ball.getVelocityX() * 1.00015);
+	ball.setVelocityY(ball.getVelocityY() * 1.00015);
+
+	checkWinCondition();
+	checkLoseCondition();
+
+
 }
 
 void GameManager::handleCollisions()
@@ -136,10 +143,22 @@ void GameManager::checkWinCondition()
 			if (!bricks[i][j].getIsDestroyed())
 			{
 				player.setWinStatus(false);
+				return;
 			}
 		}
 	}
 	player.setWinStatus(true);
+	gameOver = true;
+}
+
+void GameManager::checkLoseCondition()
+{
+	if (ball.getCircle().getPosition().y + ball.getRadius() >= 1080)
+	{
+		player.setWinStatus(false);
+		gameOver = true;
+	}
+
 }
 
 void GameManager::startLevel()
