@@ -72,9 +72,7 @@ void GameManager::handleCollisions()
 			brick.setIsDestroyed(true);
 
 			// Increment score
-			if (brick.getBrickType() == Brick::WOOD_BRICK) player.incrementScore(100);
-			else if (brick.getBrickType() == Brick::METAL_BRICK) player.incrementScore(200);
-			else player.incrementScore(300);
+			player.incrementScore(brick.getPointValue());
 
 
 			// Find sides

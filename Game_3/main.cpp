@@ -11,9 +11,9 @@ int main()
 	window.setFramerateLimit(60);
 
 	GameManager managers[3] = {
-		GameManager(1, 1, Color(71, 52, 233)),
-		GameManager(1, 2, Color(57, 82, 100)),
-		GameManager(1, 3, Color(85, 255, 200))
+		GameManager(10, 5, Color(71, 52, 233)),
+		GameManager(12, 7, Color(57, 82, 100)),
+		GameManager(15, 10, Color(85, 255, 200))
 	};
 
 	Font font;
